@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    h2{
+        height: 100px;
+    }
+</style>
+<body>
+    <h2>测试全屏</h2>
+    <script src="./js/jquery.min.js"></script>
+    <script>
+        
+        //开启全屏
+        function fullScreen(){
+            //1.选中html标签
+            var el = document.documentElement;
+            //2.检测支持什么全屏的方法
+            var rfs = el.requestFullScreen || el.webkitRequestFullScreen || el.mozRequestFullScreen || el.msRequestFullscreen;
+            //3.检测当前rfs 里面是否 有函数，如果有函数就说明支持全屏，如果没有就是undefined
+            //就说明上面的方法都不支持
+            if(typeof rfs != "undefined" && rfs) {
+                rfs.call(el);//如果支持 就调用全屏方法
+            };
+        }
+        //退出全屏
+        function exitScreen(){
+            var el = document;
+            var cfs =el.exitFullscree|| el.webkitCancelFullScreen||el.mozCancelFullScreen||el.msExitFullscreen;
+            if(typeof cfs != "undefined" && cfs) {
+                cfs.call(el);
+            }
+        }
+        //全屏切换
+        $("h2").click(function(){
+            if($(this).hasClass("www")){
+                fullScreen();
+                $(this).removeClass("www").addClass("ttt");
+                $(this).text("测试展示全屏")
+            }else{
+                exitScreen();
+                $(this).removeClass("ttt").addClass("www")
+                $(this).text("测试退出全屏");
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,190 @@
+/* 初始化样式 */
+*{
+    margin: 0;
+    padding: 0;
+}
+ul{
+    list-style: none;
+}
+/* header样式 */
+header{
+    height: 50px;
+    background: #1D74B2;
+}
+header .l{
+    float: left;
+    height: 100%;
+    background: pink;
+}
+header .r{
+    float: right;
+    height: 100%;
+    margin-right: 30px;
+}
+header .load{
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    float: right;
+}
+header .load .iconshuaxin{
+    color: white;
+}
+
+/* aside样式 */
+.wrapper{
+    height: calc(100vh - 50px);
+}
+
+.wrapper aside{
+    float: left;
+    width: 140px;
+    background: #223142;
+    height: 100%;
+    transition: width .5s ease;
+    position: relative;
+}
+.wrapper aside .openAndclose{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    background: #1b2735;
+}
+.wrapper aside .openAndclose .iconweibiaoti25,.wrapper aside .openAndclose .iconweibiaoti26{
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+}
+.wrapper aside .nav1{
+    width: 100%;
+    overflow: auto;
+    height: calc(100% - 50px);
+}
+.wrapper aside .nav1::-webkit-scrollbar{
+    display: none;
+}
+.wrapper aside .nav1 li{
+    display: flex;
+    color: white;
+    height: 40px;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+    border-left: 4px solid transparent;
+    padding-left: 11px;
+}
+.wrapper aside .nav1 li:first-child{
+    border-left: 4px solid #1d74b2;
+    background: #394655;
+}
+.wrapper aside .nav1 li:hover{
+    background: #394655 !important;
+    cursor: pointer;
+}
+.wrapper aside .nav1 li i{
+    font-size: 20px;
+    margin-right: 10px;
+}
+.wrapper aside .nav1 li span{
+    font-size: 12px;
+    white-space: nowrap;
+}
+.wrapper aside .nav2{
+    width: 0;
+    height: 100%;
+    overflow: auto;
+    position: absolute;
+    top: 0;
+    left: 140px;
+    background: #394655;
+    transition: all .5s ease;
+    font-size: 0;
+}
+.wrapper aside .nav2::-webkit-scrollbar{
+    display: none;
+}
+.wrapper aside .nav2 > li{
+    
+    /* height: 40px; */
+    width: 100%;
+    box-sizing: border-box;
+    padding-left: 10px;
+    color: white;
+    padding-right: 10px;
+    cursor: pointer;
+    -webkit-user-select: none;
+}
+.nav2 > li:not(:first-child):hover{
+    background: #68727d;
+}
+.wrapper aside .nav2 > li .title{
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.wrapper aside .nav2 > li:first-child{
+    height: 50px;
+    font-size: 14px;
+    line-height: 50px;
+}
+.wrapper aside .nav2 > li:first-child .title{
+    height: 50px;
+}
+.wrapper aside .nav2 > li i{
+    /* font-size: 0; */
+}
+.wrapper aside .nav2 > li span{
+    white-space: nowrap;
+}
+.wrapper aside .nav2 .nav3{
+    box-sizing: border-box;
+    display: none;
+    width: 140px;
+    position: relative;
+    left: -10px;
+}
+.wrapper aside .nav2 .nav3 li{
+    height: 40px;
+    line-height: 40px;
+    cursor: pointer;
+    white-space: nowrap;
+    box-sizing: border-box;
+    padding-left: 20px;
+    -webkit-user-select: none;
+}
+
+/* main样式 */
+.wrapper main{
+    margin-left: 140px;
+    background: white;
+    height: 100%;
+    transition: all .5s ease;
+}
+
+.wrapper main .topFixed{
+    height: 30px;
+    box-sizing: border-box;
+    border-bottom: 1px solid gainsboro;
+}
+.wrapper main .topFixed .Breadcrumb{
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    width: 300px;
+    height: 100%;
+    padding-left: 10px;
+}
+
+.wrapper main .contents{
+    height: calc(100% - 30px);
+}
+.wrapper main .contents iframe{
+    width: 100%;
+    height: 100%;
+    border: 0;
+}

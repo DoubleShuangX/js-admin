@@ -1,4 +1,20 @@
 window.onload = function(){
+    // 查看IE版本
+    var agent = navigator.userAgent.toLowerCase();
+    if (agent.indexOf('trident') > 0) {
+        var arr = agent.split(';');
+        var v;
+        for(var n = 0; n < arr.length; n ++){
+            if(arr[n].indexOf('msie') != -1){
+                v = arr[n].split('e')[1]
+            }
+        }
+        console.log(v)
+        if(!isNaN(v)){
+            parseInt(v) > 9 || $('.body').html('浏览器版本过低，请升级版本后使用').css({fontSize: '30px', color: 'red',textAlign: 'center', paddingTop: '50px'})
+        }
+    }
+
     //刷新页面 :是刷新子窗口里面的页面
     $(".load").click(function(){
         //获取iframe里面的子窗口对象contentWindow
@@ -6,7 +22,7 @@ window.onload = function(){
     })
     
     // 导航数据
-    let data = [
+    var data = [
         {
             name: '首页',
             icon: 'iconxitong1',
@@ -105,17 +121,17 @@ window.onload = function(){
                 }
             ]
         },
-    ]
-    console.log(sessionStorage.getItem('url'))
-    let url = sessionStorage.getItem('url') || './test.html'
-    $('iframe').attr('src',url)
-    data.forEach(item => {
-        let li = $(`<li url="${item.url}">
-                        <i class="iconfont ${item.icon}"></i>
-                        <span>${item.name}</span>
-                    </li>`);
-        $('.nav1').append(li)
-    })
+    ];
+    // console.log(sessionStorage.getItem('url'))
+    // let url = sessionStorage.getItem('url') || './test.html'
+    // $('iframe').attr('src',url)
+
+    var len1 = data.length;
+    for(var i = 0; i < len1; i ++){
+        var item1 = data[i];
+        var li1 = $('<li url=' + item1.url + '><i class="iconfont ' + item1.icon + '"></i><span>' + item1.name +'</span></li>');
+        $('.nav1').append(li1)
+    }
 
     // 展开与收缩侧边栏
     $('.openAndclose i').click(function(){
@@ -126,9 +142,10 @@ window.onload = function(){
             $('aside .nav1 span').css({fontSize:0})
             $('.nav2').css({left:'50px'})
             if($('.nav2').hasClass('show')){
-                $('main').css({marginLeft:'190px'})
+                $('main').css({marginLeft: '190px', width: 'calc(100% - 190px)'})
+                
             }else{
-                $('main').css({marginLeft:'50px'})
+                $('main').css({marginLeft:'50px', width: 'calc(100% - 50px)'})
             }
         }else{
             $(this).removeClass('iconweibiaoti25').addClass('iconweibiaoti26')
@@ -136,9 +153,9 @@ window.onload = function(){
             $('aside .nav1 span').css({fontSize:'12px'})
             $('.nav2').css({left:'140px'})
             if($('.nav2').hasClass('show')){
-                $('main').css({marginLeft:'280px'})
+                $('main').css({marginLeft:'280px', width: 'calc(100% - 280px)'})
             }else{
-                $('main').css({marginLeft:'140px'})
+                $('main').css({marginLeft:'140px', width: 'calc(100% - 140px)'})
             }
         }
 
@@ -149,72 +166,65 @@ window.onload = function(){
     $('.nav1 li').click(function(){
         $('.nav2').html('')
         $('.Breadcrumb').html('')
-        let tapText = $(this).children('span').text();
-        let span = $(`<span class="first">${tapText}</span>`)
+        var tapText = $(this).children('span').text();
+        var span = $('<span class="first">' + tapText + '</span>')
         $('.Breadcrumb').append(span)
         
         $(this).css({background:'#394655', borderLeft: '4px solid #1d74b2'}).siblings().css({background:'#223142', borderLeft: '4px solid transparent'})
         if(tapText == '首页'){
             if($('.openAndclose i').hasClass('iconweibiaoti26')){
                 $('.nav2').css({width: '0', left:'140px',fontSize:'12px'})
-                $('main').css({marginLeft:'140px'})
+                $('main').css({marginLeft:'140px', width: 'calc(100% - 140px)'})
             }else{
                 $('.nav2').css({width: '0', left:'50px',fontSize:'12px'})
-                $('main').css({marginLeft:'50px'})
+                $('main').css({marginLeft:'50px', width: 'calc(100% - 50px)'})
             }
             $('.nav2').removeClass('show')
         }else{
             if($('.openAndclose i').hasClass('iconweibiaoti26')){
                 $('.nav2').css({width: '140px', left:'140px',fontSize:'12px'})
-                $('main').css({marginLeft:'280px'})
+                $('main').css({marginLeft:'280px', width: 'calc(100% - 280px)'})
             }else{
                 $('.nav2').css({width: '140px', left:'50px',fontSize:'12px'})
-                $('main').css({marginLeft:'190px'})
+                $('main').css({marginLeft:'190px', width: 'calc(100% - 190px)'})
             }
             $('.nav2').addClass('show')
         }
         
-        let tapData = data.find(item => {
-            return item.name == tapText;
-        })
-        let firstLi = $(`<li url="${tapData.url}">
-                            <div class="title">
-                                <span>${tapData.name}</span>
-                                <i class="iconfont iconfanhui"></i>
-                            </div>
-                        </li>`)
+        var len2 = data.length;
+        var tapData;
+        for(var i = 0; i < len2; i ++){
+            if(data[i].name == tapText){
+                tapData = data[i];
+            }
+        }
+
+        var firstLi = $('<li url="' + tapData.url + '"><div class="title"><span>' + tapData.name + '</span><i class="iconfont iconfanhui"></i></div></li>')
         $('.nav2').append(firstLi)
+
         if($(this).attr('url') != 'undefined'){
             // sessionStorage.setItem('url',$(this).attr('url'))
             $('iframe').attr('src',$(this).attr('url'))
         }
         if(!tapData.children) return ;
-        tapData.children.forEach(item => {
-            let li;
-            if(item.children){
-                li = $(`<li url="${item.url}">
-                            <div class="title tap2">
-                                <span>${item.name}</span>
-                                <i class="iconfont iconxsj"></i>
-                            </div>
-                            <ul class="nav3">
-                            </ul>
-                        </li>`)
-                item.children.forEach(list => {
-                    let cli = $(`<li url="${list.url}">${list.name}</li>`)
-                    li.children('ul').append(cli)
-                })
-            }else{
-                li = $(`<li url="${item.url}">
-                            <div class="title tap2">
-                                <span>${item.name}</span>
-                            </div>
-                        <li>`)
-            }
-            $('.nav2').append(li)
-        })
 
-        
+        var len3 = tapData.children.length;
+        for(var t = 0; t < len3; t ++){
+            var li2,
+                item2 = tapData.children[t];
+            if(item2.children){
+                li2 = $('<li url="' + item2.url + '"><div class="title tap2"><p><i class="iconfont ' + item2.icon + '"></i><span>' + item2.name + '</span></p><i class="iconfont iconxsj"></i></div><ul class="nav3"></ul></li>')
+                for(var j = 0; j < item2.children.length; j ++){
+                    var list1 = item2.children[j];
+                    var cli = $('<li url="' + list1.url + '">' + list1.name + '</li>')
+                    li2.children('ul').append(cli)
+                }
+            }else{
+                li2 = $('<li url="' + item2.url+ '"><div class="title tap2"><p><i class="iconfont ' + item2.icon + '"></i><span>' + item2.name + '</span></p><li>')
+            }
+            $('.nav2').append(li2)
+        }
+
         
     })
 
@@ -223,10 +233,10 @@ window.onload = function(){
         $('.nav2').removeClass('show')
         if($('.openAndclose i').hasClass('iconweibiaoti26')){
             $('.nav2').css({width: '0', left:'140px'})
-            $('main').css({marginLeft:'140px'})
+            $('main').css({marginLeft:'140px', width: 'calc(100% - 140px)'})
         }else{
             $('.nav2').css({width: '0', left:'50px'})
-            $('main').css({marginLeft:'50px'})
+            $('main').css({marginLeft:'50px', width: 'calc(100% - 50px)'})
         }
     })
 
@@ -235,18 +245,18 @@ window.onload = function(){
         console.log(this)
         $('.Breadcrumb').children('.second').remove()
         $('.Breadcrumb').children('.three').remove()
-        let span = $(`<span class="second"> > ${$(this).children('span').text()}</span>`)
+        var span = $('<span class="second"> >' + $(this).find('span').text() + '</span>')
         $('.Breadcrumb').append(span)
         if($(this).children('i').hasClass('iconxsj')){
             $(this).children('i').addClass('iconssj-copy').removeClass('iconxsj')
-            $(this).next().css({display:'block'})
-            $(this).parent().siblings().children('.nav3').css({display:'none'})
+            $(this).next().slideDown()
+            $(this).parent().siblings().children('.nav3').slideUp()
             $(this).parent().siblings().css({background: ''})
             $(this).parent().siblings().children('.tap2').find('i').addClass('iconxsj').removeClass('iconssj-copy')
         }else{
             $(this).children('i').addClass('iconxsj').removeClass('iconssj-copy')
-            $(this).next().css({display:'none'})
-            $(this).parent().siblings().children('.nav3').css({display:'none'})
+            $(this).next().slideUp()
+            $(this).parent().siblings().children('.nav3').slideUp()
             $(this).parent().siblings().children('.tap2').find('i').addClass('iconxsj').removeClass('iconssj-copy')
         }
         console.log($(this).parent().attr('url'))
@@ -264,7 +274,7 @@ window.onload = function(){
     // 点击三级导航
     $('.nav2').on('click','.nav3 li',function(){
         $('.Breadcrumb').children('.three').remove()
-        let span = $(`<span class="three"> > ${$(this).text()}</span>`)
+        var span = $('<span class="three"> >' + $(this).text() + '</span>')
         $('.Breadcrumb').append(span)
         if($(this).attr('url') != 'undefined'){
             // sessionStorage.setItem('url',$(this).attr('url'))
@@ -278,7 +288,7 @@ window.onload = function(){
     // 鼠标移入一级导航显示提示内容
     $('.nav1').on('mouseover','li',function(e){
         if($('.openAndclose i').hasClass('iconweibiaoti25')){
-            let hintText = $(this).children('span').text();
+            var hintText = $(this).children('span').text();
             $(this).attr('title',hintText)
         }else{
             $(this).removeAttr('title')

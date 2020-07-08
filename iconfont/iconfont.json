@@ -1,0 +1,93 @@
+{
+  "id": "1903796",
+  "name": "admin",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "8643140",
+      "name": "刷新",
+      "font_class": "shuaxin",
+      "unicode": "e602",
+      "unicode_decimal": 58882
+    },
+    {
+      "icon_id": "15587266",
+      "name": "返回",
+      "font_class": "xsj",
+      "unicode": "e780",
+      "unicode_decimal": 59264
+    },
+    {
+      "icon_id": "15587277",
+      "name": "返回",
+      "font_class": "ssj-copy",
+      "unicode": "e781",
+      "unicode_decimal": 59265
+    },
+    {
+      "icon_id": "7372237",
+      "name": "返回",
+      "font_class": "fanhui",
+      "unicode": "e601",
+      "unicode_decimal": 58881
+    },
+    {
+      "icon_id": "588124",
+      "name": "网络",
+      "font_class": "wangluo1",
+      "unicode": "e6a5",
+      "unicode_decimal": 59045
+    },
+    {
+      "icon_id": "1137788",
+      "name": "系统",
+      "font_class": "xitong",
+      "unicode": "e67c",
+      "unicode_decimal": 59004
+    },
+    {
+      "icon_id": "2815735",
+      "name": "系统",
+      "font_class": "xitong1",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "5383655",
+      "name": "监控",
+      "font_class": "jiankong",
+      "unicode": "e77f",
+      "unicode_decimal": 59263
+    },
+    {
+      "icon_id": "5944758",
+      "name": "日志",
+      "font_class": "rizhi",
+      "unicode": "e609",
+      "unicode_decimal": 58889
+    },
+    {
+      "icon_id": "15231697",
+      "name": "工具",
+      "font_class": "15",
+      "unicode": "e61b",
+      "unicode_decimal": 58907
+    },
+    {
+      "icon_id": "593497",
+      "name": "展开",
+      "font_class": "weibiaoti25",
+      "unicode": "e62b",
+      "unicode_decimal": 58923
+    },
+    {
+      "icon_id": "593498",
+      "name": "收缩",
+      "font_class": "weibiaoti26",
+      "unicode": "e62c",
+      "unicode_decimal": 58924
+    }
+  ]
+}

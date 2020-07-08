@@ -36,6 +36,7 @@ header .load .iconshuaxin{
 /* aside样式 */
 .wrapper{
     height: calc(100vh - 50px);
+    font-size: 0;
 }
 
 .wrapper aside{
@@ -45,6 +46,7 @@ header .load .iconshuaxin{
     height: 100%;
     transition: width .5s ease;
     position: relative;
+    z-index: 99;
 }
 .wrapper aside .openAndclose{
     width: 100%;
@@ -132,6 +134,12 @@ header .load .iconshuaxin{
     font-size: 14px;
     line-height: 50px;
 }
+.tap2 p{
+    white-space: nowrap;
+}
+.tap2 p i{
+    margin-right: 10px;
+}
 .wrapper aside .nav2 > li:first-child .title{
     height: 50px;
 }
@@ -154,15 +162,18 @@ header .load .iconshuaxin{
     cursor: pointer;
     white-space: nowrap;
     box-sizing: border-box;
-    padding-left: 20px;
+    padding-left: 50px;
     -webkit-user-select: none;
 }
 
 /* main样式 */
 .wrapper main{
-    margin-left: 140px;
     background: white;
     height: 100%;
+    width: calc(100% - 140px);
+    box-sizing: border-box;
+    margin-left: 140px;
+    display: block;
     transition: all .5s ease;
 }
 
